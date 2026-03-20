@@ -980,6 +980,38 @@
       .hero-stat-row { grid-template-columns: repeat(3, 1fr); }
       .hero-stat-num { font-size: 20px; }
     }
+
+    /* ===== REEL BELT (NEW) ===== */
+    .reel-section {
+      overflow: hidden;
+      padding: 40px 0;
+      background: var(--cream);
+      position: relative;
+    }
+    .reel-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: reelScroll 35s linear infinite;
+    }
+    @keyframes reelScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .reel-card {
+      width: 220px;
+      height: 390px;
+      border-radius: 18px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #000;
+    }
+    .reel-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -1066,6 +1098,23 @@
       </div>
     </div>
   </section>
+
+  <!-- REEL SECTION -->
+  <div class="reel-section">
+    <div class="reel-track">
+      <!-- ORIGINAL SET -->
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774027844/AQNfcplfEWJ81cwcaIsyLofyLpV9XmonRLuApJjZpYHk6amDuY5DbduxFOZ9Mso5LOjEpBDUZr58vB-EZJtLwdj4_wvytsf.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028523/AQOKIOCggHGVn80d-00YBCY9Zl5AYhPRlW2sd9hNZslRgx2GHLGo67baIh_nKiyNDOlG32x3ED0Dn-ZZrLlvokt8FJmXD8DTnNyfHdo_qk4siq.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028532/AQM1vh5k4-jgbTY12qM5Iw-64Cuw3pg7lAlk6s0W7QCqGjNKQviencgP7eCL3_SQ6yrTtR8Y750COMD-qLrF5d8n-9_4ztJw5HYCr-4_tlbn33.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028532/AQMKcYoiXgnOsQVwrLHuivoa2LnzF3-c8Qe6vdn0l_OjfeqAkMbt4hxZ8jPVf0UGjoSQqInbFOnMQdvfXGBVshSb_gjp3av.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028549/AQOOW0mjEhayiFPkx149tYcM7oBwaYm8IwvRd-6UJP9Np3veoWrRZpGZTurMg6fYs9QjYAMfP3O2ImphT5_OBba1sl_rB8wxbcSHygc_lfkwl8.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028557/AQPvX9Q8uRrEz1ZKg_5jFk2ZV4HVitDv6wArQaZfXPDGULelojTv1mq6QWKdVJtQp1OObFjjs0S9PATO_-unpSnQ_yfkfel.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028556/AQP47TrIo8HeQJhA3X-8W-_xPWrtIHBFZaKbZzFR6-fwJX-uoYrglDyiATA7SSbIC6MToyKWiHR9KAumcDyTlbFU_liffpx.mp4" autoplay muted loop playsinline></video></div>
+      <!-- DUPLICATE FOR LOOP -->
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774027844/AQNfcplfEWJ81cwcaIsyLofyLpV9XmonRLuApJjZpYHk6amDuY5DbduxFOZ9Mso5LOjEpBDUZr58vB-EZJtLwdj4_wvytsf.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-card"><video src="https://res.cloudinary.com/dkgkfa3rj/video/upload/v1774028523/AQOKIOCggHGVn80d-00YBCY9Zl5AYhPRlW2sd9hNZslRgx2GHLGo67baIh_nKiyNDOlG32x3ED0Dn-ZZrLlvokt8FJmXD8DTnNyfHdo_qk4siq.mp4" autoplay muted loop playsinline></video></div>
+    </div>
+  </div>
 
   <!-- MARQUEE -->
   <div class="marquee-section">
@@ -1406,6 +1455,15 @@
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+      });
+    });
+  </script>
+
+  <script>
+    // Reel belt – click to toggle mute
+    document.querySelectorAll('.reel-card video').forEach(video => {
+      video.addEventListener('click', () => {
+        video.muted = !video.muted;
       });
     });
   </script>
